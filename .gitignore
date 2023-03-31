@@ -1,4 +1,4 @@
-config.js
+secrets.js
 node_modules/
 Documents/
 package-lock.json
