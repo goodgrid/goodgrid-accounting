@@ -198,13 +198,12 @@ const allocateInvoiceNumbers = async (amount) => {
 const saveInvoice = (properties) => {
     const { id, invoiceNumber, invoiceDate, amount, vat } = properties
 
-    //console.log(properties)
     notionApi.patch(`pages/${id}`,{
         "properties": {
-            "Factuurnummer": [{"text": {"content": invoiceNumber}}],
-            "Factuurdatum": {"start": invoiceDate},
-            //"Bruto factuurbedrag": {"number": amount},
-            //"BTW": {"number": vat}
+            "Factuurnummer": {"title": [{"text": {"content": invoiceNumber}}]},
+            "Factuurdatum": { "date": {"start": invoiceDate, "end": null, "time_zone": null}},
+            "Bruto factuurbedrag": {"number": amount},
+            "BTW": {"number": vat}
     
         }
     })
